@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Minimalist Landing Page</title>
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/vivus@latest/dist/vivus.min.js"></script>
 </head>
 <body>
   <header>
@@ -20,27 +23,44 @@
 
   <main>
     <section class="hero">
-      <img src="hero-image.jpg" alt="Hero Image">
-      <h1>Minimal Product</h1>
-      <p>A simple and elegant solution.</p>
-      <a href="#" class="cta">Buy Now</a>
+      <div class="video-background">
+        <video autoplay muted loop>
+          <source src="hero-video.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="hero-content">
+        <h1 class="animate__animated animate__fadeInUp">Minimal Product</h1>
+        <p class="animate__animated animate__fadeInUp animate__delay-1s">A simple and elegant solution.</p>
+        <a href="#" class="cta animate__animated animate__fadeInUp animate__delay-2s">Buy Now</a>
+      </div>
     </section>
 
     <section class="features">
-      <div class="feature">
-        <img src="icon-1.svg" alt="Feature 1">
-        <h3>Feature 1</h3>
-        <p>Description of feature 1.</p>
-      </div>
-      <div class="feature">
-        <img src="icon-2.svg" alt="Feature 2">
-        <h3>Feature 2</h3>
-        <p>Description of feature 2.</p>
-      </div>
-      <div class="feature">
-        <img src="icon-3.svg" alt="Feature 3">
-        <h3>Feature 3</h3>
-        <p>Description of feature 3.</p>
+      <div class="swiper features-swiper">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <div class="feature">
+              <svg id="icon-1" class="feature-icon"></svg>
+              <h3>Feature 1</h3>
+              <p>Description of feature 1.</p>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="feature">
+              <svg id="icon-2" class="feature-icon"></svg>
+              <h3>Feature 2</h3>
+              <p>Description of feature 2.</p>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="feature">
+              <svg id="icon-3" class="feature-icon"></svg>
+              <h3>Feature 3</h3>
+              <p>Description of feature 3.</p>
+            </div>
+          </div>
+        </div>
+        <div class="swiper-pagination"></div>
       </div>
     </section>
   </main>
@@ -52,5 +72,33 @@
       <a href="#">Legal</a>
     </div>
   </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+  <script>
+    // Initialize Swiper
+    var swiper = new Swiper('.features-swiper', {
+      slidesPerView: 1,
+      spaceBetween: 30,
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+      breakpoints: {
+        768: {
+          slidesPerView: 2,
+        },
+        1024: {
+          slidesPerView: 3,
+        },
+      },
+    });
+
+    // Animate SVG icons
+    var icons = [
+      new Vivus('icon-1', { duration: 200, file: 'icon-1.svg' }),
+      new Vivus('icon-2', { duration: 200, file: 'icon-2.svg' }),
+      new Vivus('icon-3', { duration: 200, file: 'icon-3.svg' }),
+    ];
+  </script>
 </body>
 </html>
